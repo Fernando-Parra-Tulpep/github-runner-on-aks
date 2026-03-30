@@ -56,8 +56,8 @@ jobs:
           kubectl wait --for=condition=available --timeout=120s deployment/cert-manager -n cert-manager
           kubectl wait --for=condition=available --timeout=120s deployment/cert-manager-webhook -n cert-manager
           sleep 30
-          kubectl create -f ./runner/actions-runner-controller.yaml 
-          kubectl create secret generic controller-manager -n actions-runner-system --from-literal=github_token=${{ secrets.RUNNER_TOKEN }}
+          kubectl apply -f ./runner/actions-runner-controller.yaml 
+          kubectl create secret generic controller-manager -n actions-runner-system --from-literal=github_token=${{ secrets.RUNNER_TOKEN }} --dry-run=client -o yaml | kubectl apply -f -
           sleep 90
           kubectl apply -f ./runner/runnerdeployment.yaml 
           kubectl apply -f ./runner/hra-scaler.yaml
