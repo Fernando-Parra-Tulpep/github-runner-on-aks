@@ -7,4 +7,3 @@ spec:
   template:
     spec:
       repository: Fernando-Parra-Tulep/github-runner-on-aks
-      #organization: <YOUR ORG NAME IF WANT TO WORK AT ORG LEVEL>  
